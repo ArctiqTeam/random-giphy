@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <base href="/" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Random Giphy Selector</title>
+    <link rel="stylesheet" type="text/css" href="index.css" />
+    <script src="lib/require.js"></script>
+    <script src="bootstrap.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+  </head>
+  <body>
+    <div class="loading">
+      <p>Here is your random fails giphy!!</p>
+      <div id="_giphy_tv"></div>
+      <script>
+        jQuery(function($) {
+          fetch('//api.giphy.com/v1/gifs/random?tag=fails&api_key=4Z7XmRZCziCDF0q6rLwAKO7BjgGuF74u').then(function(response) {
+            return response.json();
+          }).then(function(my_result) {
+            $('#_giphy_tv').html('<img src="'+my_result.data.image_url+'">');
+          });
+        });
+      </script>
+    </div>
+    <div style="text-align:center;"><a href="https://giphy.com"><img src="Poweredby_100px-White_VertLogo.png" alt="Powered by Giphy"></a></div>
+  </body>
+</html>

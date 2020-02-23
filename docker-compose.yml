@@ -1,0 +1,4 @@
+random-giphy-selector:
+  build: .
+  ports:
+    - '80:80'

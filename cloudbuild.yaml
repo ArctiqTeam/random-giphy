@@ -1,0 +1,16 @@
+# gcloud builds submit --project=arctiqteam-images --config=cloudbuild.yaml  --substitutions=TAG_NAME=""
+steps:
+- name: 'gcr.io/cloud-builders/docker'
+  args:
+    - 'build'
+    - '-t'
+    - 'gcr.io/$PROJECT_ID/random-giphy:$TAG_NAME'
+    - '.'
+- name: 'gcr.io/cloud-builders/docker'
+  args:
+    - 'tag'
+    - 'gcr.io/$PROJECT_ID/random-giphy:$TAG_NAME'
+    - 'gcr.io/$PROJECT_ID/random-giphy:latest'
+images:
+  - gcr.io/$PROJECT_ID/random-giphy:$TAG_NAME
+  - gcr.io/$PROJECT_ID/random-giphy:latest

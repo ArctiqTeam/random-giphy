@@ -1,0 +1,34 @@
+body {
+  margin: 0;
+  padding: 1rem;
+  font-family: sans-serif;
+}
+
+.loading {
+  font-style: italic;
+  text-align: center;
+}
+
+.product .name {
+  font-size: 2rem;
+}
+
+.product .servingSuggestion {
+  font-style: italic;
+}
+
+.product .image {
+  width: 100%;
+}
+
+@media (min-width:600px) {
+  .product .image {
+    width: 50%;
+    float: right;
+  }
+}
+
+.product .action {
+  display: block;
+  margin: 1rem 0;
+}
