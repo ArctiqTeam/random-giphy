@@ -1,11 +1,8 @@
-FROM nginx:alpine
-
-COPY nginx.conf /etc/nginx/nginx.conf
+FROM nginx:1.18
+MAINTAINER tim.fairweather@arctiq.ca
+RUN apt-get update && apt-get install -y curl && apt-get clean
 COPY . /usr/share/nginx/html
-
-RUN chmod -R 777 /var/log/nginx /var/cache/nginx /var/run \
-     && chgrp -R 0 /etc/nginx \
-     && chmod -R g+rwX /etc/nginx \
-     && rm /etc/nginx/conf.d/default.conf
-
+ADD startup.sh . 
+RUN chmod +x startup.sh
 EXPOSE 8080
+CMD ["./startup.sh"]
